@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 
 let puerto = process.env.PORT || 4000;
 
