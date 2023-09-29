@@ -5,6 +5,8 @@ let puerto = process.env.PORT || 4000;
 
 const servidor = express();
 
+servidor.use(cors());
+
 servidor.use("/prueba", express.static("./estaticos"))
 
 
