@@ -11,14 +11,7 @@ servidor.use(cors());
 servidor.use("/prueba", express.static("./estaticos"))
 
 
-servidor.get("/", (peticion, respuesta) => {
-    let  [r,g,b] = [0,0,0].map(() => Math.floor(Math.random() * 256));
-
-    respuesta.json({r,g,b})
-})
-
-
-servidor.get("/colores", async (peticion, respuesta) => {
+servidor.get("/", async (peticion, respuesta) => {
     respuesta.json(await colores());
     console.log(respuesta)
 })
