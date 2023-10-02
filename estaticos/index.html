@@ -7,6 +7,25 @@
 </head>
 <body>
     <h1>Site de prueba</h1>
-    
+    <ul></ul>
+    <script>
+        
+        const lista = document.querySelector("ul");
+
+        fetch("/colores")
+        .then(respuesta => respuesta.json())
+        .then(colores => {
+            console.log(colores)
+            colores.forEach(({r,g,b,_id}) => {
+                let item = document.createElement("li");
+                let enlace = document.createElement("a")
+                enlace.style.color = `rgb(${[r,g,b].join(",")})`;
+                enlace.href = `/borrar/${_id}`;
+                enlace.innerHTML = [r,g,b].join(",");
+                item.appendChild(enlace);
+                lista.appendChild(item);
+            });
+        });
+    </script>
 </body>
 </html>
