@@ -1,7 +1,7 @@
 const {MongoClient, ObjectId} = require("mongodb")
 
 
-const urlConexion = process.env.MONGO_URL; 
+const urlConexion = process.env.ULR_MONGO; 
 
 function conectar(){
     return MongoClient.connect(urlConexion);
