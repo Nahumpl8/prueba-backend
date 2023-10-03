@@ -10,6 +10,7 @@ function conectar(){
 
 function colores(){
     return new Promise(async callback => {
+
         let conexion = await conectar();
 
         let coleccion = conexion.db("colores").collection("colores");

@@ -12,8 +12,8 @@ servidor.use("/prueba", express.static("./estaticos"))
 
 
 servidor.get("/", async (peticion, respuesta) => {
-    respuesta.json(await colores());
-    console.log(respuesta)
+    let listaColores = await colores();
+    respuesta.json(listColores[Math.floor(Math.random() * listaColores.length)])
 })
 
 //servidor.get("/crear", async (peticion, respuesta) => {
@@ -22,7 +22,7 @@ servidor.get("/", async (peticion, respuesta) => {
 
 servidor.use((peticion, respuesta) => {
     respuesta.status(404)
-    respuestra.send("not found 🧸")
+    respuesta.send("not found 🧸")
 })
 
 servidor.listen(puerto)
