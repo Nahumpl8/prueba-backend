@@ -1,6 +1,6 @@
 const express = require("express")
 const cors = require("cors")
-const {colores} = require("./db.js")
+const {colores, crear} = require("./db.js")
 
 let puerto = process.env.PORT || 4000;
 
@@ -16,9 +16,10 @@ servidor.get("/", async (peticion, respuesta) => {
     respuesta.json(listaColores[Math.floor(Math.random() * listaColores.length)])
 })
 
-//servidor.get("/crear", async (peticion, respuesta) => {
-    //respuesta.json(await crearColor(134,144,233))
-//})
+servidor.get("/crear", async (peticion, respuesta) => {
+    respuesta.json(crear())
+    console.log("hecho")
+})
 
 servidor.use((peticion, respuesta) => {
     respuesta.status(404)

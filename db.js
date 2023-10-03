@@ -1,7 +1,8 @@
-const {MongoClient, ObjectId} = require("mongodb")
+const {MongoClient} = require("mongodb")
 
+const urlConexion = "mongodb+srv://nahumpl8:8888@cluster01.lgecmz8.mongodb.net/" 
 
-const urlConexion = process.env.ULR_MONGO; 
+//const urlConexion = process.env.ULR_MONGO; 
 
 function conectar(){
     return MongoClient.connect(urlConexion);
@@ -23,18 +24,20 @@ function colores(){
     })
 }
 
-/*function crearColor({r,g,b}){
-    return new Promise(async callback => {
+function crear(){
+    return new Promise( async callback => {
+
         let conexion = await conectar();
 
         let coleccion = conexion.db("colores").collection("colores");
 
-        let resultado = await coleccion.insertOne({r, g, b})
+        let resultado = await coleccion.insertOne({r : Math.floor(Math.random() * 255), g : Math.floor(Math.random() * 255), b : Math.floor(Math.random() * 255)})
 
         conexion.close();
 
-        callback({r,g,b});
-    })
-}*/
+        callback(resultado)
 
-module.exports = {colores};
+
+    })
+}
+module.exports = {colores, crear};
