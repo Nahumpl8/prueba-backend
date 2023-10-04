@@ -1,8 +1,6 @@
 const {MongoClient} = require("mongodb")
 
-const urlConexion = "mongodb+srv://nahumpl8:8888@cluster01.lgecmz8.mongodb.net/" 
-
-//const urlConexion = process.env.ULR_MONGO; 
+const urlConexion = process.env.ULR_MONGO; 
 
 function conectar(){
     return MongoClient.connect(urlConexion);
